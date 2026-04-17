@@ -3,8 +3,9 @@ import axios from "axios";
 
 export default function SignIn() {
   const [form, setForm] = useState({
-    user: "",
-    password: ""
+    username: "",
+    password: "",
+    userType: "admin"
   });
 
   const handleChange = (e) => {
@@ -19,25 +20,38 @@ export default function SignIn() {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/admin/login",
+        `http://localhost:5000/api/user/login`,
         form
       );
 
-      localStorage.setItem("loggedIn", JSON.stringify(res.data));
+      const perm = {
+      admin: 1,
+      coach: 2,
+      player: 3,
+      parent: 4
+      };
 
-      if (res.data === true) {
-        alert("Login successful");
-      }
+      const permLevel = perm[res.data];
 
+      localStorage.setItem("permLevel", permLevel);
+
+      alert("Login successful");
     } catch (err) {
       alert("Login failed");
     }
   };
 
   return (
+    
     <form onSubmit={handleSubmit}>
+      <select name="userType" onChange={handleChange}>
+        <option value="admin">Admin</option>
+        <option value="coach">Coach</option>
+        <option value="player">Player</option>
+        <option value="parent">Parent</option>
+      </select>
       <input
-        name="user"
+        name="username"
         placeholder="Username"
         onChange={handleChange}
       />

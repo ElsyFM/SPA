@@ -24,8 +24,8 @@ const coachRoutes = require("./routes/coachRoutes");
 app.use("/api/coach", coachRoutes);
 const adminRoutes = require("./routes/adminRoutes");
 app.use("/api/admin", adminRoutes);
-// const loginRoutes = require("./routes/adminRoutes");
-// app.use("/api/login", loginRoutes);
+const userRoutes = require("./routes/userRoutes");
+app.use("/api/user", userRoutes);
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI)

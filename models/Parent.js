@@ -1,10 +1,9 @@
 const mongoose = require("mongoose");
+const User = require("./User");
 
-const parentSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  user: { type: String, required: true },
-  password: { type: String, required: true },
-  
-});
+const Parent = User.discriminator("parent", new mongoose.Schema({
+  childUsername: { type: String, required: true}
+}));
 
-module.exports = mongoose.model("Parent", parentSchema);
+module.exports = Parent;
+

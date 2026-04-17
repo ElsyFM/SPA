@@ -1,11 +1,8 @@
 const mongoose = require("mongoose");
+const User = require("./User");
 
-const coachSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  user: { type: String, required: true },
-  password: { type: String, required: true },
-  team: String,
+const Coach = User.discriminator("coach", new mongoose.Schema({
+    team: String,
+}));
 
-});
-
-module.exports = mongoose.model("Coach", coachSchema);
+module.exports = Coach;

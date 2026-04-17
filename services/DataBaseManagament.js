@@ -1,7 +1,8 @@
 const Player = require("../models/Player");
 const Parent = require("../models/Parent");
 const Coach = require("../models/Coach");
-const Admim = require("../models/Admin");
+const Admin = require("../models/Admin");
+const User = require("../models/User");
 
 class DataBaseManagement {
 
@@ -9,7 +10,7 @@ class DataBaseManagement {
 
   async getUser(userID, adminID) {
     // check adminID permissions here
-    return await Parent.findById(userID);
+    return await User.findById(userID);
   }
 
   async addUser(userID, password, adminID) {

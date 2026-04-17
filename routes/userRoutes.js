@@ -1,0 +1,62 @@
+const express = require("express");
+const router = express.Router();
+const User = require("../models/User");
+
+router.post("/create-user", async (req, res) => {
+  try {
+    const { username, password, userType } = req.body;
+
+    const existing = await User.findOne({ username });
+    
+    if (existing) {
+        return res.json("User already exists");
+    }
+
+    const models = {
+      admin: require("../models/Admin"),
+      coach: require("../models/Coach"),
+      player: require("../models/Player"),
+      parent: require("../models/Parent")
+    };
+
+    const Model = models[userType];
+
+    if (!Model) return res.status(400).json("Invalid User Type");
+
+    const newUser = await Model.create({ ...req.body, userType });
+
+    res.json(newUser);
+  } catch (err) {
+    res.status(500).json(err.message);
+  }
+});
+
+router.post("/login", async (req, res) => {
+  const { username, password, userType } = req.body;
+
+  try {
+    // Check if admin exists
+    const user = await User.findOne({ username });
+    if (!user) {
+      return res.status(400).json("Invalid username or password");
+    }
+
+    // Compare passwords
+    // const isMatch = await bcrypt.compare(password, user.password);
+    // if (!isMatch) {
+    //   return res.status(400).json("Invalid username or password");
+    // }
+    if (password !== user.password) {
+        return res.status(400).json("Invalid username or password");
+    }
+
+    // Send response
+    // Totally insucure so we should fix later
+    res.json( userType );
+
+  } catch (err) {
+    res.status(500).json("Server error");
+  }
+});
+
+module.exports = router;
