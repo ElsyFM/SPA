@@ -1,6 +1,7 @@
 const Player = require("../models/Player");
 const Parent = require("../models/Parent");
 const Coach = require("../models/Coach");
+const Admim = require("../models/Admin");
 
 class DataBaseManagement {
 

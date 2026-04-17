@@ -22,16 +22,18 @@ const parentRoutes = require("./routes/parentRoutes");
 app.use("/api/parents", parentRoutes);
 const coachRoutes = require("./routes/coachRoutes");
 app.use("/api/coach", coachRoutes);
+const adminRoutes = require("./routes/adminRoutes");
+app.use("/api/admin", adminRoutes);
+// const loginRoutes = require("./routes/adminRoutes");
+// app.use("/api/login", loginRoutes);
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB Connected"))
   .catch(err => console.log(err));
 
-const PORT = process.env.PORT || 5001;
+const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
-
-
