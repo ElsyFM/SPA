@@ -1,4 +1,4 @@
-import { addUser }
+import DataBaseManagement from "../../../services/DataBaseManagament";
 import { useState, useEffect } from "react";
 
 export default function Admin() {
@@ -14,7 +14,122 @@ export default function Admin() {
     return () => clearInterval(interval);
   }, []);
 
-  
+  const [AdminCreationForm, setAdminCreationForm] = useState({
+    name: "",
+    username: "",
+    password: "",
+    userType: "admin"
+  });
+
+  const [CoachCreationForm, setCoachCreationForm] = useState({
+    name: "",
+    username: "",
+    password: "",
+    userType: "coach",
+    team: ""
+  });
+
+  const [PlayerCreationForm, setPlayerCreationForm] = useState({
+    name: "",
+    username: "",
+    password: "",
+    userType: "player",
+    age: NaN,
+    position: "",
+    team: ""
+  });
+
+  const [ParentCreationForm, setParentCreationForm] = useState({
+    name: "",
+    username: "",
+    password: "",
+    userType: "parent",
+    childUsername: ""
+  });
+
+  const handleAdminCreationChange = (e) => {
+    setAdminCreationForm({
+      ...AdminCreationForm,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleCoachCreationChange = (e) => {
+    setCoachCreationForm({
+      ...CoachCreationForm,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handlePlayerCreationChange = (e) => {
+    setPlayerCreationForm({
+      ...PlayerCreationForm,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleParentCreationChange = (e) => {
+    setParentCreationForm({
+      ...ParentCreationForm,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleAdminCreation = async (e) => {
+    e.preventDefault();
+
+    try {
+      const res = await DataBaseManagement.addUser(AdminCreationForm);
+
+      console.log("ADMIN CREATION RESPONSE:", res.data);
+
+      alert(res.data);
+    } catch (err) {
+      alert("Admin creation failed");
+    }
+  };
+
+  const handleCoachCreation = async (e) => {
+    e.preventDefault();
+
+    try {
+      const res = await DataBaseManagement.addUser(CoachCreationForm);
+
+      console.log("Coach CREATION RESPONSE:", res.data);
+
+      alert(res.data);
+    } catch (err) {
+      alert("Coach creation failed");
+    }
+  };
+
+  const handlePlayerCreation = async (e) => {
+    e.preventDefault();
+
+    try {
+      const res = await DataBaseManagement.addUser(PlayerCreationForm);
+
+      console.log("Player CREATION RESPONSE:", res.data);
+
+      alert(res.data);
+    } catch (err) {
+      alert("Coach creation failed");
+    }
+  };
+
+  const handleParentCreation = async (e) => {
+    e.preventDefault();
+
+    try {
+      const res = await DataBaseManagement.addUser(ParentCreationForm);
+
+      console.log("Parent CREATION RESPONSE:", res.data);
+
+      alert(res.data);
+    } catch (err) {
+      alert("Parent creation failed");
+    }
+  };
 
 
   if (permLevel !== 1) return null;
@@ -22,26 +137,98 @@ export default function Admin() {
   return (
     <div>
       <div>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleAdminCreation}>
         <input
             name="name"
-            type="name"
+            type="text"
             placeholder="Name"
-            onChange={handleChange}
+            onChange={handleAdminCreationChange}
         />
         <input
             name="username"
-            type="username"
+            type="text"
             placeholder="Username"
-            onChange={handleChange}
+            onChange={handleAdminCreationChange}
         />
         <input
             name="password"
             type="password"
             placeholder="Password"
-            onChange={handleChange}
+            onChange={handleAdminCreationChange}
         />
         <button type="submit">Create Admin</button>
+        </form>
+      </div>
+
+      <div>
+        <form onSubmit={handleCoachCreation}>
+        <input
+            name="name"
+            type="text"
+            placeholder="Name"
+            onChange={handleCoachCreationChange}
+        />
+        <input
+            name="username"
+            type="text"
+            placeholder="Username"
+            onChange={handleCoachCreationChange}
+        />
+        <input
+            name="password"
+            type="password"
+            placeholder="Password"
+            onChange={handleCoachCreationChange}
+        />
+        <input
+            name="team"
+            type="text"
+            placeholder="Team"
+            onChange={handleCoachCreationChange}
+        />
+        <button type="submit">Create Coach</button>
+        </form>
+      </div>
+
+      <div>
+        <form onSubmit={handlePlayerCreation}>
+        <input
+            name="name"
+            type="text"
+            placeholder="Name"
+            onChange={handlePlayerCreationChange}
+        />
+        <input
+            name="username"
+            type="text"
+            placeholder="Username"
+            onChange={handlePlayerCreationChange}
+        />
+        <input
+            name="password"
+            type="password"
+            placeholder="Password"
+            onChange={handlePlayerCreationChange}
+        />
+        <input
+            name="age"
+            type="number"
+            placeholder="Age"
+            onChange={handlePlayerCreationChange}
+        />
+        <input
+            name="position"
+            type="text"
+            placeholder="Position"
+            onChange={handlePlayerCreationChange}
+        />
+        <input
+            name="team"
+            type="text"
+            placeholder="Team"
+            onChange={handlePlayerCreationChange}
+        />
+        <button type="submit">Create Player</button>
         </form>
       </div>
 

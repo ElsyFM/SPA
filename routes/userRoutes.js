@@ -4,7 +4,7 @@ const User = require("../models/User");
 
 router.post("/create-user", async (req, res) => {
   try {
-    const { username, password, userType } = req.body;
+    const { name, username, password, userType } = req.body;
 
     const existing = await User.findOne({ username });
     
@@ -25,7 +25,8 @@ router.post("/create-user", async (req, res) => {
 
     const newUser = await Model.create({ ...req.body, userType });
 
-    res.json(newUser);
+    //res.json(newUser);
+    return res.json("User creation sucessful")
   } catch (err) {
     res.status(500).json(err.message);
   }

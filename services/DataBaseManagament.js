@@ -1,42 +1,44 @@
-const Player = require("../models/Player");
-const Parent = require("../models/Parent");
-const Coach = require("../models/Coach");
-const Admin = require("../models/Admin");
-const User = require("../models/User");
+import axios from "axios";
+// const Player = require("../models/Player");
+// const Parent = require("../models/Parent");
+// const Coach = require("../models/Coach");
+// const Admin = require("../models/Admin");
+// // const User = require("../models/User");
+// import Player from "../models/Player";
+// import Parent from "../models/Parent";
+// import Coach from "../models/Coach";
+// import Admin from "../models/Admin";
+// import User from "../models/User";
 
 class DataBaseManagement {
 
   // ================= USERS =================
 
-  async getUser(userID, adminID) {
-    // check adminID permissions here
+  async getUser(userID) {
     return await User.findById(userID);
   }
 
-  async addUser(userID, password, adminID) {
-    return await Parent.create({
-      _id: userID,
-      password: password
-    });
+  async addUser(form) {
+    const res = await axios.post(
+      "http://localhost:5000/api/user/create-user",
+      form
+    );
+
+    return res;
   }
 
-  async removeUser(userID, adminID) {
-    return await Parent.findByIdAndDelete(userID);
+  async removeUser(userID) {
+    return await User.findByIdAndDelete(userID);
   }
 
-  async editUser(user, userID) {
-    return await Parent.findByIdAndUpdate(userID, user, { new: true });
+  async editUser(userID, user) {
+    return await User.findByIdAndUpdate(userID, user, { new: true });
   }
 
   // ================= TEAMS =================
 
-  async getTeam(teamID, userID) {
-    // depends how you store teams (maybe inside user?)
-    return await Parent.findOne({ _id: userID, team: teamID });
-  }
-
   async addTeam(teamID, userID) {
-    return await Parent.findByIdAndUpdate(
+    return await User.findByIdAndUpdate(
       userID,
       { team: teamID },
       { new: true }
@@ -44,17 +46,9 @@ class DataBaseManagement {
   }
 
   async removeTeam(teamID, userID) {
-    return await Parent.findByIdAndUpdate(
+    return await User.findByIdAndUpdate(
       userID,
       { $unset: { team: "" } },
-      { new: true }
-    );
-  }
-
-  async editTeam(teamID, userID) {
-    return await Parent.findByIdAndUpdate(
-      userID,
-      { team: teamID },
       { new: true }
     );
   }
@@ -65,23 +59,17 @@ class DataBaseManagement {
     return await Player.findById(playerID);
   }
 
-  async addPlayer(userID, password, name, age, logs, adminID) {
-    return await Player.create({
-      user: userID,
-      password: password,
-      name: name,
-      age: age,
-      logs: logs
-    });
+  async addPlayer(data) {
+    return await Player.create(data);
   }
 
-  async removePlayer(playerID, adminID) {
+  async removePlayer(playerID) {
     return await Player.findByIdAndDelete(playerID);
   }
 
   // ================= PLAYER LOGS =================
 
-  async addPlayerLog(playerID, log, userID) {
+  async addPlayerLog(playerID, log) {
     return await Player.findByIdAndUpdate(
       playerID,
       { $push: { logs: log } },
@@ -89,14 +77,14 @@ class DataBaseManagement {
     );
   }
 
-  async updatePlayerLog(playerID, logID, updatedLog, userID) {
+  async updatePlayerLog(playerID, logID, updatedLog) {
     return await Player.updateOne(
       { _id: playerID, "logs._id": logID },
       { $set: { "logs.$": updatedLog } }
     );
   }
 
-  async deletePlayerLog(playerID, logID, userID) {
+  async deletePlayerLog(playerID, logID) {
     return await Player.findByIdAndUpdate(
       playerID,
       { $pull: { logs: { _id: logID } } },
@@ -105,4 +93,6 @@ class DataBaseManagement {
   }
 }
 
-module.exports = new AppService();
+const instance = new DataBaseManagement();
+
+export default instance;
