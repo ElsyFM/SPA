@@ -32,6 +32,24 @@ router.post("/create-user", async (req, res) => {
   }
 });
 
+router.post("/delete-user", async (req, res) => {
+  try {
+    const { username } = req.body;
+
+    const user = await User.findOne({ username });
+
+    if (!user) {
+      return res.json("User does not exist");
+    };
+
+    const guh = await User.findByIdAndDelete(user._id);
+    return res.json("User deletion sucessful", guh);
+
+  } catch (err) {
+    res.status(500).json(err.message);
+  }
+});
+
 router.post("/login", async (req, res) => {
   const { username, password, userType } = req.body;
 

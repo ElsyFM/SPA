@@ -47,6 +47,10 @@ export default function Admin() {
     childUsername: ""
   });
 
+  const [UserDeletionForm, setUserDeletionForm] = useState({
+    username: ""
+  });
+
   const handleAdminCreationChange = (e) => {
     setAdminCreationForm({
       ...AdminCreationForm,
@@ -73,6 +77,16 @@ export default function Admin() {
       ...ParentCreationForm,
       [e.target.name]: e.target.value
     });
+  };
+
+  const handleUserDeletionChange = (e) => {
+    setUserDeletionForm({
+      ...UserDeletionForm,
+      [e.target.name]: e.target.value
+    });
+    // setUserDeletionForm({
+    //   username = e.target.value
+    // });
   };
 
   const handleAdminCreation = async (e) => {
@@ -113,7 +127,7 @@ export default function Admin() {
 
       alert(res.data);
     } catch (err) {
-      alert("Coach creation failed");
+      alert("Player creation failed");
     }
   };
 
@@ -131,6 +145,20 @@ export default function Admin() {
     }
   };
 
+  const handleUserDeletion = async (e) => {
+    e.preventDefault();
+
+    try {
+
+      const res = await DataBaseManagement.removeUser(UserDeletionForm);
+
+      console.log("USER DELETION RESPONSE:", res.data);
+
+      alert(res.data);
+    } catch (err) {
+      alert("User deletion failed");
+    }
+  };
 
   if (permLevel !== 1) return null;
 
@@ -232,7 +260,17 @@ export default function Admin() {
         </form>
       </div>
 
-      <div>This is also visible!</div>
+      <div>
+        <form onSubmit={handleUserDeletion}>
+        <input
+          name="username"
+          type="text"
+          placeholder="Username"
+          onChange={handleUserDeletionChange}
+        />
+        <button type="submit">Delete User</button>
+        </form>
+      </div>
     </div>
   );
 }

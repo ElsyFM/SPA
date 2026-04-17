@@ -1,9 +1,10 @@
 import axios from "axios";
+//import User from "../models/User";
 // const Player = require("../models/Player");
 // const Parent = require("../models/Parent");
 // const Coach = require("../models/Coach");
 // const Admin = require("../models/Admin");
-// // const User = require("../models/User");
+//const User = require("../models/User");
 // import Player from "../models/Player";
 // import Parent from "../models/Parent";
 // import Coach from "../models/Coach";
@@ -13,7 +14,6 @@ import axios from "axios";
 class DataBaseManagement {
 
   // ================= USERS =================
-
   async getUser(userID) {
     return await User.findById(userID);
   }
@@ -27,8 +27,13 @@ class DataBaseManagement {
     return res;
   }
 
-  async removeUser(userID) {
-    return await User.findByIdAndDelete(userID);
+  async removeUser(username) {
+    const res = await axios.post(
+      "http://localhost:5000/api/user/delete-user",
+      username
+    );
+
+    return res;
   }
 
   async editUser(userID, user) {
