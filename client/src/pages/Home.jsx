@@ -3,6 +3,7 @@ import Hero from "../components/Hero";
 import { useNavigate } from "react-router-dom";
 import CreateTest from "../components/CreateTest";
 import SignIn from "../components/SignIn";
+import Admin from "../components/Admin";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -13,6 +14,7 @@ export default function Home() {
       <Hero />
       <CreateTest />
       <SignIn />
+      <Admin />
     </div>
   );
 }

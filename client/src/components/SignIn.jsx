@@ -26,7 +26,7 @@ export default function SignIn() {
 
 
       console.log("LOGIN RESPONSE:", res.data);
-      
+
       const perm = {
         admin: 1,
         coach: 2,
@@ -47,12 +47,6 @@ export default function SignIn() {
   return (
     
     <form onSubmit={handleSubmit}>
-      {/* <select name="userType" onChange={handleChange}>
-        <option value="admin">Admin</option>
-        <option value="coach">Coach</option>
-        <option value="player">Player</option>
-        <option value="parent">Parent</option>
-      </select> */}
       <input
         name="username"
         placeholder="Username"
