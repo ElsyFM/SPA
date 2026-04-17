@@ -35,24 +35,20 @@ router.post("/login", async (req, res) => {
   const { username, password, userType } = req.body;
 
   try {
-    // Check if admin exists
+    // Check if user exists
     const user = await User.findOne({ username });
     if (!user) {
       return res.status(400).json("Invalid username or password");
     }
 
     // Compare passwords
-    // const isMatch = await bcrypt.compare(password, user.password);
-    // if (!isMatch) {
-    //   return res.status(400).json("Invalid username or password");
-    // }
     if (password !== user.password) {
         return res.status(400).json("Invalid username or password");
     }
 
     // Send response
     // Totally insucure so we should fix later
-    res.json( userType );
+    res.json( user.userType );
 
   } catch (err) {
     res.status(500).json("Server error");

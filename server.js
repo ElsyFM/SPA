@@ -17,9 +17,9 @@ app.use((req, res, next) => {
 
 // Routes
 const playerRoutes = require("./routes/playerRoutes");
-app.use("/api/players", playerRoutes);
+app.use("/api/player", playerRoutes);
 const parentRoutes = require("./routes/parentRoutes");
-app.use("/api/parents", parentRoutes);
+app.use("/api/parent", parentRoutes);
 const coachRoutes = require("./routes/coachRoutes");
 app.use("/api/coach", coachRoutes);
 const adminRoutes = require("./routes/adminRoutes");

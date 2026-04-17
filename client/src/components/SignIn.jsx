@@ -24,11 +24,14 @@ export default function SignIn() {
         form
       );
 
+
+      console.log("LOGIN RESPONSE:", res.data);
+      
       const perm = {
-      admin: 1,
-      coach: 2,
-      player: 3,
-      parent: 4
+        admin: 1,
+        coach: 2,
+        player: 3,
+        parent: 4
       };
 
       const permLevel = perm[res.data];
@@ -44,12 +47,12 @@ export default function SignIn() {
   return (
     
     <form onSubmit={handleSubmit}>
-      <select name="userType" onChange={handleChange}>
+      {/* <select name="userType" onChange={handleChange}>
         <option value="admin">Admin</option>
         <option value="coach">Coach</option>
         <option value="player">Player</option>
         <option value="parent">Parent</option>
-      </select>
+      </select> */}
       <input
         name="username"
         placeholder="Username"

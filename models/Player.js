@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
 const User = require("./User");
 
-Player = User.discriminator("Player", new mongoose.Schema({
-    age: Number,
-    position: String,
-    team: String,
+const Player = User.discriminator("player", new mongoose.Schema({
+    age: {type: Number, required: true},
+    position:  {type: String, required: true},
+    team: {type: String, required: true},
 
     logs: [
       {

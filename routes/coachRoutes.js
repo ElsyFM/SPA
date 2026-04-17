@@ -1,26 +1,29 @@
 const express = require("express");
 const router = express.Router();
 const Coach = require("../models/Coach");
+const User = require("../models/User");
 
-
-// CREATE Coach
-router.post("/", async (req, res) => {
+router.post("/create-test", async (req, res) => {
   try {
-    const Coach = new Coach(req.body);
-    const savedCoach = await Coach.save();
-    res.status(201).json(savedCoach);
-  } catch (err) {
-    res.status(400).json({ error: err.message });
-  }
-});
+    const existing = await User.findOne({ username: "BigXthaCoach" });
 
-// GET All Coachs
-router.get("/", async (req, res) => {
-  try {
-    const Coachs = await Coach.find();
-    res.json(Coachs);
+    if (existing) {
+      return res.json("Coach already exists");
+    }
+
+    const coach = new Coach({
+      name: "JohnCoach",
+      username: "BigXthaCoach",
+      password: "password2",
+      userType: "coach",
+      team: "The Largest"
+    });
+
+    await coach.save();
+
+    res.json("Test coach created");
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    res.status(500).json("Error creating coach");
   }
 });
 

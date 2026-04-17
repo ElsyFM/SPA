@@ -1,25 +1,31 @@
 const express = require("express");
 const router = express.Router();
 const Parent = require("../models/Parent");
+const User = require("../models/User");
 
-// CREATE Parent
-router.post("/", async (req, res) => {
+router.post("/create-test", async (req, res) => {
   try {
-    const Parent = new Parent(req.body);
-    const savedParent = await Parent.save();
-    res.status(201).json(savedParent);
-  } catch (err) {
-    res.status(400).json({ error: err.message });
-  }
-});
+    const test_username = "SirDuncanTheTall3"
 
-// GET All Parents
-router.get("/", async (req, res) => {
-  try {
-    const Parents = await Parent.find();
-    res.json(Parents);
+    const existing = await User.findOne({ username: test_username});
+
+    if (existing) {
+      return res.json("Parent already exists");
+    }
+
+    const parent = new Parent({
+      name: "Sir Duncan",
+      username: test_username,
+      password: "password3",
+      userType: "parent",
+      childUsername: "Egg"
+    });
+
+    await parent.save();
+
+    res.json("Test parent created");
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    res.status(500).json("Error creating parent");
   }
 });
 
