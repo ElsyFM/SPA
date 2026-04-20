@@ -53,7 +53,7 @@ export default function Hero() {
   <div className="mx-auto max-w-7xl px-6 lg:px-8">
     <div className="mx-auto max-w-2xl lg:mx-0">
       <h2 className="items-center text-4xl font-semibold text-pretty text-white sm:text-5xl">About SPA!</h2>
-      <p className="mt-2 text-lg/8 text-gray-300">Learn how to grow your business with our expert advice.</p>
+      <p className="mt-2 text-lg/8 text-gray-300">Utility for coaches, players, and parents!</p>
     </div>
 
    <div className="max-w-7xl mx-auto px-6 py-16">
@@ -72,7 +72,7 @@ export default function Hero() {
             </h1>
 
             <p className="text-xl text-gray-600 mb-8">
-              Coaches
+              Add more info here later
             </p>
 
       </article>
@@ -80,7 +80,7 @@ export default function Hero() {
       <article className="w-full max-w-md bg-white shadow-lg rounded-xl p-8 flex flex-col items-center text-center">
           <img
               className="w-full mb-6"
-              src="https://d33wubrfki0l68.cloudfront.net/d6f1462500f7670e0db6b76b35054a081679a5a0/0ce15/images/hero/5.1/illustration.png"
+              src=""
               alt=""
             />
 
@@ -89,13 +89,13 @@ export default function Hero() {
             </h1>
 
             <p className="text-xl text-gray-600 mb-8">
-              Coaches
+              Add more info here later
             </p>
       </article>
       <article className="w-full max-w-md bg-white shadow-lg rounded-xl p-8 flex flex-col items-center text-center">
           <img
               className="w-full mb-6"
-              src="https://d33wubrfki0l68.cloudfront.net/d6f1462500f7670e0db6b76b35054a081679a5a0/0ce15/images/hero/5.1/illustration.png"
+              src=""
               alt=""
             />
 
@@ -104,7 +104,7 @@ export default function Hero() {
             </h1>
 
             <p className="text-xl text-gray-600 mb-8">
-              Coaches
+              Add more info here later
             </p>
       </article>
     </div>

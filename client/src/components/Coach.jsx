@@ -246,7 +246,6 @@ export default function Coach() {
                         <li>Age: {viewedPlayer.age}</li>
                         <li>Position: {viewedPlayer.position}</li>
                         <li>Team: {viewedPlayer.team}</li>
-                        {/* ADD A WAY TO VIEW ALL LOGS HERE */}
                     </ul>
 
                 {viewedPlayer?.logs?.length > 0 && (
@@ -279,7 +278,6 @@ export default function Coach() {
                 <input name="attendance" type="checkbox" onChange={(e) =>
                     setLogForm({ ...LogForm, attendance: e.target.checked })
                 } />
-                {" "}{" "}
 
                 <input name="playTime" type="number" placeholder="Play Time" onChange={handleLogChange} />
                 <input name="PAC" type="number" placeholder="PAC" onChange={handleLogChange} />
