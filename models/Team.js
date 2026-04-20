@@ -8,7 +8,7 @@ const teamSchema = new mongoose.Schema(
     numWins: { type: Number},
     numLosses: { type: Number},
     numTies: { type: Number},
-    numGames: { type: Number},
+    winTieLoss: { type: Number},
   }
 );
 

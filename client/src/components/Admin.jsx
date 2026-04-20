@@ -197,6 +197,12 @@ export default function Admin() {
   return (
     <div>
       <div>
+        <br></br>
+        <p>========================================================</p>
+        <p>ADMIN DASHBOARD</p>
+      </div>
+
+      <div>
         <form onSubmit={handleAdminCreation}>
         <input
             name="name"
@@ -309,7 +315,7 @@ export default function Admin() {
         <input
           name="teamName"
           type="text"
-          placeholder="teamName"
+          placeholder="Team Name"
           onChange={handleTeamCreationChange}
         />
         <button type="submit">Create Team</button>
@@ -321,7 +327,7 @@ export default function Admin() {
         <input
           name="teamName"
           type="text"
-          placeholder="teamName"
+          placeholder="Team Name"
           onChange={handleTeamDeletionChange}
         />
         <button type="submit">Delete Team</button>

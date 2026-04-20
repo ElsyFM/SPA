@@ -49,6 +49,24 @@ class DataBaseManagement {
     return res;
   }
 
+  async editTeam(form) {
+    const res = await axios.post(
+      "http://localhost:5000/api/team/edit-team",
+      form
+    );
+
+    return res.data;
+  }
+
+  async viewTeam(form) {
+    const res = await axios.post(
+      "http://localhost:5000/api/team/view-team",
+      form
+    )
+
+    return res.data;
+  }
+
   // ================= PLAYERS =================
 
   async getPlayer(playerID) {

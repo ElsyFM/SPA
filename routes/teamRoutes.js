@@ -39,4 +39,71 @@ router.post("/delete-team", async (req, res) => {
   }
 });
 
+router.post("/edit-team", async (req, res) => {
+  try {
+    const {
+        teamName,
+        numGames,
+        numPlayers,
+        numWins,
+        numLosses,
+        numTies,
+    } = req.body;
+
+    const games = Number(numGames);
+    const wins = Number(numWins);
+
+    const winTieLoss = wins/games;
+
+    const team = await Team.findOne({ teamName });
+
+    if (!team) {
+      return res.json("Team does not exist");
+    };
+
+    const updatedTeam = await Team.findOneAndUpdate(
+      { teamName },
+      {
+        numGames: games,
+        numPlayers: Number(numPlayers),
+        numWins: wins,
+        numLosses: Number(numLosses),
+        numTies: Number(numTies),
+        winTieLoss
+      },
+      { new: true }
+    );
+
+    return res.json({
+        message: "Team update successful",
+        team: updatedTeam
+    });
+
+  } catch (err) {
+    res.status(500).json(err.message);
+  }
+});
+
+router.post("/view-team", async (req, res) => {
+  try {
+    const {
+        teamName
+    } = req.body;
+
+    const team = await Team.findOne({ teamName });
+
+    if (!team) {
+      return res.json("Team does not exist");
+    };
+
+    return res.json({
+        message: "Found team",
+        team: team
+    });
+
+  } catch (err) {
+    res.status(500).json(err.message);
+  }
+});
+
 module.exports = router;

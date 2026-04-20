@@ -1,5 +1,8 @@
 
 import POSC from "../assets/POSC.png";
+import SignIn from "./SignIn";
+import CreateTest from "./CreateTest";
+
 export default function Hero() {
   return (
 
@@ -19,9 +22,11 @@ export default function Hero() {
           <p className="text-3xl text-gray-800 mb-12">
             Real passion, and real growth for every footballer
           </p>
-          <button className="w-full py-6 text-lg font-bold text-white bg-gray-900 rounded-lg hover:bg-gray-700 transition">
-            Sign in
-          </button>
+          <div>
+            <SignIn />
+            <br></br>
+            <CreateTest />
+          </div>
         </div>
 
         {/* Right Image */}
