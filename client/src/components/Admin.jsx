@@ -1,18 +1,7 @@
 import DataBaseManagement from "../../../services/DataBaseManagament";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export default function Admin() {
-  const [permLevel, setPermLevel] = useState(
-    Number(localStorage.getItem("permLevel"))
-  );
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setPermLevel(Number(localStorage.getItem("permLevel")));
-    }, 200);
-
-    return () => clearInterval(interval);
-  }, []);
 
   const [AdminCreationForm, setAdminCreationForm] = useState({
     name: "",
@@ -204,8 +193,6 @@ export default function Admin() {
       alert("Team deletion failed");
     }
   };
-
-  if (permLevel !== 1) return null;
 
   return (
     <div>
