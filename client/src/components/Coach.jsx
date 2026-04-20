@@ -158,12 +158,7 @@ export default function Coach() {
 
             <div>
                 <form onSubmit={handleTeamView}>
-                <input
-                name="teamName"
-                type="text"
-                placeholder="Team Name"
-                onChange={handleTeamViewChange}
-                />
+                <input name="teamName" type="text" placeholder="Team Name" onChange={handleTeamViewChange} />
                 <button type="submit">View Team</button>
                 </form>
             </div>
@@ -185,48 +180,18 @@ export default function Coach() {
 
             <div>
                 <form onSubmit={handleTeamEdit}>
-                <input
-                name="teamName"
-                type="text"
-                placeholder="Team Name"
-                onChange={handleTeamEditChange}
-                />
-                <input
-                name="numPlayers"
-                type="number"
-                placeholder="Number of Players"
-                onChange={handleTeamEditChange}
-                />
-                <input
-                name="numWins"
-                type="number"
-                placeholder="Number of Wins"
-                onChange={handleTeamEditChange}
-                />
-                <input
-                name="numLosses"
-                type="number"
-                placeholder="Number of Losses"
-                onChange={handleTeamEditChange}
-                />
-                <input
-                name="numTies"
-                type="number"
-                placeholder="Number of Ties"
-                onChange={handleTeamEditChange}
-                />
+                <input name="teamName" type="text" placeholder="Team Name" onChange={handleTeamEditChange}/>
+                <input name="numPlayers" type="number" placeholder="Number of Players" onChange={handleTeamEditChange} />
+                <input name="numWins" type="number" placeholder="Number of Wins" onChange={handleTeamEditChange} />
+                <input name="numLosses" type="number" placeholder="Number of Losses" onChange={handleTeamEditChange} />
+                <input name="numTies" type="number" placeholder="Number of Ties" onChange={handleTeamEditChange} />
                 <button type="submit">Edit Team</button>
                 </form>
             </div>
 
             <div>
                 <form onSubmit={handlePlayerView}>
-                <input
-                name="name"
-                type="text"
-                placeholder="Player Name"
-                onChange={handlePlayerViewChange}
-                />
+                <input name="name" type="text" placeholder="Player Name" onChange={handlePlayerViewChange} />
                 <button type="submit">View Player</button>
                 </form>
             </div>

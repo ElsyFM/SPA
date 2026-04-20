@@ -109,7 +109,7 @@ export default function Admin() {
     } catch (err) {
       alert("Admin creation failed");
     }
-  };
+  }
 
   const handleCoachCreation = async (e) => {
     e.preventDefault();
@@ -204,132 +204,52 @@ export default function Admin() {
 
       <div>
         <form onSubmit={handleAdminCreation}>
-        <input
-            name="name"
-            type="text"
-            placeholder="Name"
-            onChange={handleAdminCreationChange}
-        />
-        <input
-            name="username"
-            type="text"
-            placeholder="Username"
-            onChange={handleAdminCreationChange}
-        />
-        <input
-            name="password"
-            type="password"
-            placeholder="Password"
-            onChange={handleAdminCreationChange}
-        />
+        <input name="name" type="text" placeholder="Name" onChange={handleAdminCreationChange} />
+        <input name="username" type="text" placeholder="Username" onChange={handleAdminCreationChange} />
+        <input name="password" type="password" placeholder="Password" onChange={handleAdminCreationChange} />
         <button type="submit">Create Admin</button>
         </form>
       </div>
 
       <div>
         <form onSubmit={handleCoachCreation}>
-        <input
-            name="name"
-            type="text"
-            placeholder="Name"
-            onChange={handleCoachCreationChange}
-        />
-        <input
-            name="username"
-            type="text"
-            placeholder="Username"
-            onChange={handleCoachCreationChange}
-        />
-        <input
-            name="password"
-            type="password"
-            placeholder="Password"
-            onChange={handleCoachCreationChange}
-        />
-        <input
-            name="team"
-            type="text"
-            placeholder="Team"
-            onChange={handleCoachCreationChange}
-        />
+        <input name="name" type="text" placeholder="Name" onChange={handleCoachCreationChange} />
+        <input name="username" type="text" placeholder="Username" onChange={handleCoachCreationChange} />
+        <input name="password" type="password" placeholder="Password" onChange={handleCoachCreationChange} />
+        <input name="team" type="text" placeholder="Team" onChange={handleCoachCreationChange} />
         <button type="submit">Create Coach</button>
         </form>
       </div>
 
       <div>
         <form onSubmit={handlePlayerCreation}>
-        <input
-            name="name"
-            type="text"
-            placeholder="Name"
-            onChange={handlePlayerCreationChange}
-        />
-        <input
-            name="username"
-            type="text"
-            placeholder="Username"
-            onChange={handlePlayerCreationChange}
-        />
-        <input
-            name="password"
-            type="password"
-            placeholder="Password"
-            onChange={handlePlayerCreationChange}
-        />
-        <input
-            name="age"
-            type="number"
-            placeholder="Age"
-            onChange={handlePlayerCreationChange}
-        />
-        <input
-            name="position"
-            type="text"
-            placeholder="Position"
-            onChange={handlePlayerCreationChange}
-        />
-        <input
-            name="team"
-            type="text"
-            placeholder="Team"
-            onChange={handlePlayerCreationChange}
-        />
+        <input name="name" type="text" placeholder="Name" onChange={handlePlayerCreationChange} />
+        <input name="username" type="text" placeholder="Username" onChange={handlePlayerCreationChange} />
+        <input name="password" type="password" placeholder="Password" onChange={handlePlayerCreationChange} />
+        <input name="age" type="number" placeholder="Age" onChange={handlePlayerCreationChange} />
+        <input name="position" type="text" placeholder="Position" onChange={handlePlayerCreationChange} />
+        <input name="team" type="text" placeholder="Team" onChange={handlePlayerCreationChange} />
         <button type="submit">Create Player</button>
         </form>
       </div>
 
       <div>
         <form onSubmit={handleUserDeletion}>
-        <input
-          name="username"
-          type="text"
-          placeholder="Username"
-          onChange={handleUserDeletionChange}
-        />
+        <input name="username" type="text" placeholder="Username" onChange={handleUserDeletionChange} />
         <button type="submit">Delete User</button>
         </form>
       </div>
 
       <div>
         <form onSubmit={handleTeamCreation}>
-        <input
-          name="teamName"
-          type="text"
-          placeholder="Team Name"
-          onChange={handleTeamCreationChange}
-        />
+        <input name="teamName" type="text" placeholder="Team Name" onChange={handleTeamCreationChange} />
         <button type="submit">Create Team</button>
         </form>
       </div>
 
       <div>
         <form onSubmit={handleTeamDeletion}>
-        <input
-          name="teamName"
-          type="text"
-          placeholder="Team Name"
-          onChange={handleTeamDeletionChange}
-        />
+        <input name="teamName" type="text" placeholder="Team Name" onChange={handleTeamDeletionChange} />
         <button type="submit">Delete Team</button>
         </form>
       </div>
