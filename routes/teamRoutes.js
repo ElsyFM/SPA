@@ -43,14 +43,13 @@ router.post("/edit-team", async (req, res) => {
   try {
     const {
         teamName,
-        numGames,
         numPlayers,
         numWins,
         numLosses,
         numTies,
     } = req.body;
 
-    const games = Number(numGames);
+    const games = Number(numWins) + Number(numLosses) + Number(numTies);
     const wins = Number(numWins);
 
     const winTieLoss = wins/games;

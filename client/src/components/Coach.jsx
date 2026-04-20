@@ -7,7 +7,6 @@ export default function Coach() {
 
     const [TeamEditForm, setTeamEditForm] = useState({
         teamName: "",
-        numGames: NaN,
         numPlayers: NaN,
         numWins: NaN,
         numLosses: NaN,
@@ -190,12 +189,6 @@ export default function Coach() {
                 name="teamName"
                 type="text"
                 placeholder="Team Name"
-                onChange={handleTeamEditChange}
-                />
-                <input
-                name="numGames"
-                type="number"
-                placeholder="Number of Games"
                 onChange={handleTeamEditChange}
                 />
                 <input
