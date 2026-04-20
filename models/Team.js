@@ -2,7 +2,13 @@ const mongoose = require("mongoose");
 
 const teamSchema = new mongoose.Schema(
   {
-    name: { type: String, required: true}
+    teamName: { type: String, required: true},
+    numGames: { type: Number},
+    numPlayers: { type: Number},
+    numWins: { type: Number},
+    numLosses: { type: Number},
+    numTies: { type: Number},
+    numGames: { type: Number},
   }
 );
 

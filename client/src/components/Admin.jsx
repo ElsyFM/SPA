@@ -51,6 +51,14 @@ export default function Admin() {
     username: ""
   });
 
+  const [TeamCreationForm, setTeamCreationForm] = useState({
+    teamName: ""
+  });
+
+  const [TeamDeletionForm, setTeamDeletionForm] = useState({
+    teamName: ""
+  });
+
   const handleAdminCreationChange = (e) => {
     setAdminCreationForm({
       ...AdminCreationForm,
@@ -84,9 +92,20 @@ export default function Admin() {
       ...UserDeletionForm,
       [e.target.name]: e.target.value
     });
-    // setUserDeletionForm({
-    //   username = e.target.value
-    // });
+  };
+
+  const handleTeamCreationChange = (e) => {
+    setTeamCreationForm({
+      ...TeamCreationForm,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleTeamDeletionChange = (e) => {
+    setTeamDeletionForm({
+      ...TeamDeletionForm,
+      [e.target.name]: e.target.value
+    });
   };
 
   const handleAdminCreation = async (e) => {
@@ -157,6 +176,32 @@ export default function Admin() {
       alert(res.data);
     } catch (err) {
       alert("User deletion failed");
+    }
+  };
+
+  const handleTeamCreation = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await DataBaseManagement.addTeam(TeamCreationForm);
+
+      console.log("TEAM CREATION RESPONSE:", res.data);
+
+      alert(res.data);
+    } catch (err) {
+      alert("Team creation failed");
+    }
+  };
+
+  const handleTeamDeletion = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await DataBaseManagement.removeTeam(TeamDeletionForm);
+
+      console.log("TEAM DELETION RESPONSE:", res.data);
+
+      alert(res.data);
+    } catch (err) {
+      alert("Team deletion failed");
     }
   };
 
@@ -269,6 +314,30 @@ export default function Admin() {
           onChange={handleUserDeletionChange}
         />
         <button type="submit">Delete User</button>
+        </form>
+      </div>
+
+      <div>
+        <form onSubmit={handleTeamCreation}>
+        <input
+          name="teamName"
+          type="text"
+          placeholder="teamName"
+          onChange={handleTeamCreationChange}
+        />
+        <button type="submit">Create Team</button>
+        </form>
+      </div>
+
+      <div>
+        <form onSubmit={handleTeamDeletion}>
+        <input
+          name="teamName"
+          type="text"
+          placeholder="teamName"
+          onChange={handleTeamDeletionChange}
+        />
+        <button type="submit">Delete Team</button>
         </form>
       </div>
     </div>

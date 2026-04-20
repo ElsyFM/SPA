@@ -1,15 +1,4 @@
 import axios from "axios";
-//import User from "../models/User";
-// const Player = require("../models/Player");
-// const Parent = require("../models/Parent");
-// const Coach = require("../models/Coach");
-// const Admin = require("../models/Admin");
-//const User = require("../models/User");
-// import Player from "../models/Player";
-// import Parent from "../models/Parent";
-// import Coach from "../models/Coach";
-// import Admin from "../models/Admin";
-// import User from "../models/User";
 
 class DataBaseManagement {
 
@@ -27,10 +16,10 @@ class DataBaseManagement {
     return res;
   }
 
-  async removeUser(username) {
+  async removeUser(form) {
     const res = await axios.post(
       "http://localhost:5000/api/user/delete-user",
-      username
+      form
     );
 
     return res;
@@ -42,20 +31,22 @@ class DataBaseManagement {
 
   // ================= TEAMS =================
 
-  async addTeam(teamID, userID) {
-    return await User.findByIdAndUpdate(
-      userID,
-      { team: teamID },
-      { new: true }
+  async addTeam(form) {
+    const res = await axios.post(
+      "http://localhost:5000/api/team/create-team",
+      form
     );
+
+    return res;
   }
 
-  async removeTeam(teamID, userID) {
-    return await User.findByIdAndUpdate(
-      userID,
-      { $unset: { team: "" } },
-      { new: true }
+  async removeTeam(form) {
+    const res = await axios.post(
+      "http://localhost:5000/api/team/delete-team",
+      form
     );
+
+    return res;
   }
 
   // ================= PLAYERS =================
