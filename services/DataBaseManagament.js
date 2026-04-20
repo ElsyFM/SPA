@@ -69,18 +69,32 @@ class DataBaseManagement {
 
   // ================= PLAYERS =================
 
-  async getPlayer(playerID) {
-    return await Player.findById(playerID);
+  async viewPlayer(form) {
+    const res = await axios.post(
+      "http://localhost:5000/api/player/view-player",
+      form
+    )
+
+    return res.data;
   }
 
-  async addPlayer(data) {
-    return await Player.create(data);
+  async editPlayer(form) {
+    const res = await axios.post(
+      "http://localhost:5000/api/player/view-player",
+      form
+    )
+
+    return res.data;
   }
 
-  async removePlayer(playerID) {
-    return await Player.findByIdAndDelete(playerID);
-  }
+  async addPlayerLog(form) {
+    const res = await axios.post(
+      "http://localhost:5000/api/player/add-log",
+      form
+    )
 
+    return res.data;
+  }
   // ================= PLAYER LOGS =================
 
   async addPlayerLog(playerID, log) {

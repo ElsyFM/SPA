@@ -3,6 +3,8 @@ import { useState } from "react";
 
 export default function Coach() {
 
+    // TEAM INFO ============================
+
     const [TeamEditForm, setTeamEditForm] = useState({
         teamName: "",
         numGames: NaN,
@@ -59,6 +61,93 @@ export default function Coach() {
         }
     };
 
+    // PLAYER INFO ============================
+
+    const [PlayerEditForm, setPlayerEditForm] = useState({
+        name: "",
+        age: NaN,
+        position: "",
+        team: ""
+    });
+
+    const handlePlayerEditChange = (e) => {
+        setPlayerEditForm({
+        ...PlayerEditForm,
+        [e.target.name]: e.target.value
+        });
+    };
+
+    const handlePlayerEdit = async (e) => {
+        e.preventDefault();
+        try {
+        const res = await DataBaseManagement.editPlayer(PlayerEditForm);
+
+        console.log("PLAYER EDIT RESPONSE:", res.message);
+
+        setViewedPlayer(res.player);
+        } catch (err) {
+        alert("PLAYER edit failed");
+        }
+    };
+
+    const [PlayerViewForm, setPlayerViewForm] = useState({
+        name: ""
+    });
+
+    const [viewedPlayer, setViewedPlayer] = useState(null);
+
+    const handlePlayerViewChange = (e) => {
+        setPlayerViewForm({
+        ...PlayerViewForm,
+        [e.target.name]: e.target.value
+        });
+    };
+
+    const handlePlayerView = async (e) => {
+        e.preventDefault();
+        try {
+        const res = await DataBaseManagement.viewPlayer(PlayerViewForm);
+
+        console.log("PLAYER VIEW RESPONSE:", res.message);
+
+        setViewedPlayer(res.player);
+        } catch (err) {
+        alert("Player view failed");
+        }
+    };
+
+    const [LogForm, setLogForm] = useState({
+        name: "",
+        attendance: false,
+        playTime: NaN,
+        PAC: NaN,
+        SHO: NaN,
+        PAS: NaN,
+        DRI: NaN,
+        DEF: NaN,
+        PHY: NaN
+    });
+
+    const handleLogChange = (e) => {
+        setLogForm({
+        ...LogForm,
+        [e.target.name]: e.target.value
+        });
+    };
+
+    const handleLogEdit = async (e) => {
+        e.preventDefault();
+        try {
+        const res = await DataBaseManagement.addPlayerLog(LogForm);
+
+        console.log("ADD LOG RESPONSE:", res.message);
+
+        setViewedPlayer(res.player);
+        } catch (err) {
+        alert("PLAYER edit failed");
+        }
+    };
+
     return (
 
         <div>
@@ -105,37 +194,103 @@ export default function Coach() {
                 />
                 <input
                 name="numGames"
-                type="text"
+                type="number"
                 placeholder="Number of Games"
                 onChange={handleTeamEditChange}
                 />
                 <input
                 name="numPlayers"
-                type="text"
+                type="number"
                 placeholder="Number of Players"
                 onChange={handleTeamEditChange}
                 />
                 <input
                 name="numWins"
-                type="text"
+                type="number"
                 placeholder="Number of Wins"
                 onChange={handleTeamEditChange}
                 />
                 <input
                 name="numLosses"
-                type="text"
+                type="number"
                 placeholder="Number of Losses"
                 onChange={handleTeamEditChange}
                 />
                 <input
                 name="numTies"
-                type="text"
+                type="number"
                 placeholder="Number of Ties"
                 onChange={handleTeamEditChange}
                 />
                 <button type="submit">Edit Team</button>
                 </form>
             </div>
+
+            <div>
+                <form onSubmit={handlePlayerView}>
+                <input
+                name="name"
+                type="text"
+                placeholder="Player Name"
+                onChange={handlePlayerViewChange}
+                />
+                <button type="submit">View Player</button>
+                </form>
+            </div>
+
+            {viewedPlayer && (
+                <div>
+                    <h3>Player Details</h3>
+                    <ul>
+                        <li>Name: {viewedPlayer.name}</li>
+                        <li>Age: {viewedPlayer.age}</li>
+                        <li>Position: {viewedPlayer.position}</li>
+                        <li>Team: {viewedPlayer.team}</li>
+                        {/* ADD A WAY TO VIEW ALL LOGS HERE */}
+                    </ul>
+
+                {viewedPlayer?.logs?.length > 0 && (
+                    <div>
+                        <h4>Logs</h4>
+                        <ul>
+                        {viewedPlayer.logs.map((log, index) => (
+                            <li key={index}>
+                            Date: {new Date(log.date).toLocaleString()} |
+                            PAC: {log.PAC} |
+                            SHO: {log.SHO} |
+                            PAS: {log.PAS} |
+                            DRI: {log.DRI} |
+                            DEF: {log.DEF} |
+                            PHY: {log.PHY}
+                            </li>
+                        ))}
+                        </ul>
+                    </div>
+                )}
+                </div>
+                
+            )}
+            
+
+            <form onSubmit={handleLogEdit}>
+                <input name="name" placeholder="Player Name" onChange={handleLogChange} />
+
+                Attendence: {" "}
+                <input name="attendance" type="checkbox" onChange={(e) =>
+                    setLogForm({ ...LogForm, attendance: e.target.checked })
+                } />
+                {" "}{" "}
+
+                <input name="playTime" type="number" placeholder="Play Time" onChange={handleLogChange} />
+                <input name="PAC" type="number" placeholder="PAC" onChange={handleLogChange} />
+                <input name="SHO" type="number" placeholder="SHO" onChange={handleLogChange} />
+                <input name="PAS" type="number" placeholder="PAS" onChange={handleLogChange} />
+                <input name="DRI" type="number" placeholder="DRI" onChange={handleLogChange} />
+                <input name="DEF" type="number" placeholder="DEF" onChange={handleLogChange} />
+                <input name="PHY" type="number" placeholder="PHY" onChange={handleLogChange} />
+
+                <button type="submit">Add Log</button>
+            </form>
         </div>
 
     );
