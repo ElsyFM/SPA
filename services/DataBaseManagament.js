@@ -9,7 +9,7 @@ class DataBaseManagement {
 
   async addUser(form) {
     const res = await axios.post(
-      "http://localhost:5173/api/user/create-user",
+      "http://localhost:5000/api/user/create-user",
       form
     );
 
@@ -18,7 +18,7 @@ class DataBaseManagement {
 
   async removeUser(form) {
     const res = await axios.post(
-      "http://localhost:5173/api/user/delete-user",
+      "http://localhost:5000/api/user/delete-user",
       form
     );
 
@@ -33,7 +33,7 @@ class DataBaseManagement {
 
   async addTeam(form) {
     const res = await axios.post(
-      "http://localhost:5173/api/team/create-team",
+      "http://localhost:5000/api/team/create-team",
       form
     );
 
@@ -42,7 +42,7 @@ class DataBaseManagement {
 
   async removeTeam(form) {
     const res = await axios.post(
-      "http://localhost:5173/api/team/delete-team",
+      "http://localhost:5000/api/team/delete-team",
       form
     );
 
@@ -51,7 +51,7 @@ class DataBaseManagement {
 
   async editTeam(form) {
     const res = await axios.post(
-      "http://localhost:5173/api/team/edit-team",
+      "http://localhost:5000/api/team/edit-team",
       form
     );
 
@@ -60,7 +60,7 @@ class DataBaseManagement {
 
   async viewTeam(form) {
     const res = await axios.post(
-      "http://localhost:5173/api/team/view-team",
+      "http://localhost:5000/api/team/view-team",
       form
     )
 
@@ -71,7 +71,7 @@ class DataBaseManagement {
 
   async viewPlayer(form) {
     const res = await axios.post(
-      "http://localhost:5173/api/player/view-player",
+      "http://localhost:5000/api/player/view-player",
       form
     )
 
@@ -80,7 +80,7 @@ class DataBaseManagement {
 
   async editPlayer(form) {
     const res = await axios.post(
-      "http://localhost:5173/api/player/view-player",
+      "http://localhost:5000/api/player/view-player",
       form
     )
 
@@ -89,7 +89,7 @@ class DataBaseManagement {
 
   async addPlayerLog(form) {
     const res = await axios.post(
-      "http://localhost:5173/api/player/add-log",
+      "http://localhost:5000/api/player/add-log",
       form
     )
 

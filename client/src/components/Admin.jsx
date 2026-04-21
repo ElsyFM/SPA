@@ -195,83 +195,123 @@ export default function Admin() {
   };
 
   return (
-    <div className="bg-[#c2d245] min-h-screen py-16 px-6">
-  <div className="max-w-7xl mx-auto">
+<div className="bg-[#c2d245] min-h-screen py-16 px-6">
+  <div className="max-w-7xl mx-auto space-y-12">
 
-    {/* Title */}
-    <div className="mb-12 text-center">
+    {/* HEADER */}
+    <div className="text-center bg-white rounded-2xl shadow-lg p-10">
       <h1 className="text-5xl font-bold text-gray-900 mb-4">
         Admin Dashboard
       </h1>
-      <p className="text-xl text-gray-800">
+      <p className="text-xl text-gray-700">
         Manage users and teams
       </p>
     </div>
 
-    {/* Grid */}
+    {/* GRID */}
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
 
-      {/* Create Admin */}
-      <div className="bg-white p-8 rounded-xl shadow-lg">
-        <h2 className="text-2xl font-bold mb-6 text-gray-900">Create Admin</h2>
-        <form onSubmit={handleAdminCreation} className="space-y-4">
-          <input name="name" placeholder="Name" onChange={handleAdminCreationChange} className="input"/>
-          <input name="username" placeholder="Username" onChange={handleAdminCreationChange} className="input"/>
-          <input name="password" type="password" placeholder="Password" onChange={handleAdminCreationChange} className="input"/>
-          <button className="btn">Create</button>
+      {/* CREATE ADMIN */}
+      <div className="bg-white rounded-2xl shadow-lg p-8 space-y-4">
+        <h2 className="text-2xl font-bold text-gray-900">Create Admin</h2>
+
+        <form onSubmit={handleAdminCreation} className="space-y-3">
+          <input name="name" placeholder="Name" onChange={handleAdminCreationChange}
+            className="w-full border rounded-lg p-3" />
+          <input name="username" placeholder="Username" onChange={handleAdminCreationChange}
+            className="w-full border rounded-lg p-3" />
+          <input name="password" type="password" placeholder="Password" onChange={handleAdminCreationChange}
+            className="w-full border rounded-lg p-3" />
+
+          <button className="w-full bg-[#323b1a] text-white py-3 rounded-lg hover:opacity-90">
+            Create
+          </button>
         </form>
       </div>
 
-      {/* Create Coach */}
-      <div className="bg-white p-8 rounded-xl shadow-lg">
-        <h2 className="text-2xl font-bold mb-6 text-gray-900">Create Coach</h2>
-        <form onSubmit={handleCoachCreation} className="space-y-4">
-          <input name="name" placeholder="Name" onChange={handleCoachCreationChange} className="input"/>
-          <input name="username" placeholder="Username" onChange={handleCoachCreationChange} className="input"/>
-          <input name="password" type="password" placeholder="Password" onChange={handleCoachCreationChange} className="input"/>
-          <input name="team" placeholder="Team" onChange={handleCoachCreationChange} className="input"/>
-          <button className="btn">Create</button>
+      {/* CREATE COACH */}
+      <div className="bg-white rounded-2xl shadow-lg p-8 space-y-4">
+        <h2 className="text-2xl font-bold text-gray-900">Create Coach</h2>
+
+        <form onSubmit={handleCoachCreation} className="space-y-3">
+          <input name="name" placeholder="Name" onChange={handleCoachCreationChange}
+            className="w-full border rounded-lg p-3" />
+          <input name="username" placeholder="Username" onChange={handleCoachCreationChange}
+            className="w-full border rounded-lg p-3" />
+          <input name="password" type="password" placeholder="Password" onChange={handleCoachCreationChange}
+            className="w-full border rounded-lg p-3" />
+          <input name="team" placeholder="Team" onChange={handleCoachCreationChange}
+            className="w-full border rounded-lg p-3" />
+
+          <button className="w-full bg-[#323b1a] text-white py-3 rounded-lg hover:opacity-90">
+            Create
+          </button>
         </form>
       </div>
 
-      {/* Create Player */}
-      <div className="bg-white p-8 rounded-xl shadow-lg">
-        <h2 className="text-2xl font-bold mb-6 text-gray-900">Create Player</h2>
-        <form onSubmit={handlePlayerCreation} className="space-y-4">
-          <input name="name" placeholder="Name" onChange={handlePlayerCreationChange} className="input"/>
-          <input name="username" placeholder="Username" onChange={handlePlayerCreationChange} className="input"/>
-          <input name="password" type="password" placeholder="Password" onChange={handlePlayerCreationChange} className="input"/>
-          <input name="age" type="number" placeholder="Age" onChange={handlePlayerCreationChange} className="input"/>
-          <input name="position" placeholder="Position" onChange={handlePlayerCreationChange} className="input"/>
-          <input name="team" placeholder="Team" onChange={handlePlayerCreationChange} className="input"/>
-          <button className="btn">Create</button>
+      {/* CREATE PLAYER */}
+      <div className="bg-white rounded-2xl shadow-lg p-8 space-y-4">
+        <h2 className="text-2xl font-bold text-gray-900">Create Player</h2>
+
+        <form onSubmit={handlePlayerCreation} className="space-y-3">
+          <input name="name" placeholder="Name" onChange={handlePlayerCreationChange}
+            className="w-full border rounded-lg p-3" />
+          <input name="username" placeholder="Username" onChange={handlePlayerCreationChange}
+            className="w-full border rounded-lg p-3" />
+          <input name="password" type="password" placeholder="Password" onChange={handlePlayerCreationChange}
+            className="w-full border rounded-lg p-3" />
+          <input name="age" type="number" placeholder="Age" onChange={handlePlayerCreationChange}
+            className="w-full border rounded-lg p-3" />
+          <input name="position" placeholder="Position" onChange={handlePlayerCreationChange}
+            className="w-full border rounded-lg p-3" />
+          <input name="team" placeholder="Team" onChange={handlePlayerCreationChange}
+            className="w-full border rounded-lg p-3" />
+
+          <button className="w-full bg-[#323b1a] text-white py-3 rounded-lg hover:opacity-90">
+            Create
+          </button>
         </form>
       </div>
 
-      {/* Delete User */}
-      <div className="bg-white p-8 rounded-xl shadow-lg">
-        <h2 className="text-2xl font-bold mb-6 text-gray-900">Delete User</h2>
-        <form onSubmit={handleUserDeletion} className="space-y-4">
-          <input name="username" placeholder="Username" onChange={handleUserDeletionChange} className="input"/>
-          <button className="btn bg-red-500 hover:bg-red-600">Delete</button>
+      {/* DELETE USER */}
+      <div className="bg-white rounded-2xl shadow-lg p-8 space-y-4">
+        <h2 className="text-2xl font-bold text-gray-900">Delete User</h2>
+
+        <form onSubmit={handleUserDeletion} className="space-y-3">
+          <input name="username" placeholder="Username" onChange={handleUserDeletionChange}
+            className="w-full border rounded-lg p-3" />
+
+          <button className="w-full bg-red-500 text-white py-3 rounded-lg hover:bg-red-600">
+            Delete
+          </button>
         </form>
       </div>
 
-      {/* Create Team */}
-      <div className="bg-white p-8 rounded-xl shadow-lg">
-        <h2 className="text-2xl font-bold mb-6 text-gray-900">Create Team</h2>
-        <form onSubmit={handleTeamCreation} className="space-y-4">
-          <input name="teamName" placeholder="Team Name" onChange={handleTeamCreationChange} className="input"/>
-          <button className="btn">Create</button>
+      {/* CREATE TEAM */}
+      <div className="bg-white rounded-2xl shadow-lg p-8 space-y-4">
+        <h2 className="text-2xl font-bold text-gray-900">Create Team</h2>
+
+        <form onSubmit={handleTeamCreation} className="space-y-3">
+          <input name="teamName" placeholder="Team Name" onChange={handleTeamCreationChange}
+            className="w-full border rounded-lg p-3" />
+
+          <button className="w-full bg-[#323b1a] text-white py-3 rounded-lg hover:opacity-90">
+            Create
+          </button>
         </form>
       </div>
 
-      {/* Delete Team */}
-      <div className="bg-white p-8 rounded-xl shadow-lg">
-        <h2 className="text-2xl font-bold mb-6 text-gray-900">Delete Team</h2>
-        <form onSubmit={handleTeamDeletion} className="space-y-4">
-          <input name="teamName" placeholder="Team Name" onChange={handleTeamDeletionChange} className="input"/>
-          <button className="btn bg-red-500 hover:bg-red-600">Delete</button>
+      {/* DELETE TEAM */}
+      <div className="bg-white rounded-2xl shadow-lg p-8 space-y-4">
+        <h2 className="text-2xl font-bold text-gray-900">Delete Team</h2>
+
+        <form onSubmit={handleTeamDeletion} className="space-y-3">
+          <input name="teamName" placeholder="Team Name" onChange={handleTeamDeletionChange}
+            className="w-full border rounded-lg p-3" />
+
+          <button className="w-full bg-red-500 text-white py-3 rounded-lg hover:bg-red-600">
+            Delete
+          </button>
         </form>
       </div>
 

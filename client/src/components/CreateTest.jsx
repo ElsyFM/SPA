@@ -6,7 +6,7 @@ export default function CreateTest() {
     const handleCreateAdmin = async () => {
         try {
             const res = await axios.post(
-                `http://localhost:5173/api/${form.role}/create-test`
+                `http://localhost:5001/api/${form.role}/create-test`
             );
             alert(res.data);
         } catch (err) {
