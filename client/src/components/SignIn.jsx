@@ -58,7 +58,7 @@ export default function SignIn() {
         placeholder="Password"
         onChange={handleChange}
       />
-      <button type="submit">Login</button>
+      <button type="submit" className="bg-[#323b1a] text-white py-3 rounded-lg font-semibold hover:opacity-90 transition">Login</button>
     </form>
   );
 }

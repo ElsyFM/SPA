@@ -1,118 +1,134 @@
 
 import POSC from "../assets/POSC.png";
+import coach from "../assets/coach.png";
+import player from "../assets/player.png";
+import parents from "../assets/parents.png";
 import SignIn from "./SignIn";
 import CreateTest from "./CreateTest";
 
 export default function Hero() {
   return (
 
-    <div className="bg-[#c2d245]">
-     <section className="pt-12 pb-12 sm:pb-16 lg:pt-8">
-       <div className="py-24 sm:py-32">
-   
-      <section className="pt-12 pb-12 sm:pb-16 lg:pt-8">
-    <div className="px-12 w-full"> {/* Full width padding */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center w-full">
-        
-        {/* Left Card */}
-        <div className="py-32 px-16 bg-white shadow-lg rounded-xl flex flex-col w-full lg:w-auto">
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-6">
+<div className="bg-[#c2d245] min-h-screen">
+
+  {/* HERO SECTION */}
+  <section className="py-24">
+    <div className="max-w-7xl mx-auto px-6">
+      
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+        {/* LEFT CARD */}
+        <div className="bg-white rounded-2xl shadow-xl p-12 flex flex-col justify-center">
+          <h1 className="text-5xl font-bold text-gray-900 mb-6">
             Soccer Player Analyzer
           </h1>
-          <p className="text-3xl text-gray-800 mb-12">
+
+          <p className="text-2xl text-gray-700 mb-10">
             Real passion, and real growth for every footballer
           </p>
-          <div>
+
+          <div className="space-y-4">
             <SignIn />
-            <br></br>
             <CreateTest />
+            
           </div>
         </div>
 
-        {/* Right Image */}
+        {/* RIGHT IMAGE */}
         <div className="w-full">
           <img
-            className="w-full h-auto rounded-xl shadow-md scale-105"
+            className="w-full rounded-2xl shadow-lg object-cover"
             src={POSC}
-            alt="POSC logo"
+            alt="POSC"
           />
         </div>
 
       </div>
     </div>
-    
   </section>
-  </div>
 
-    </section>
 
-{/* DIV */}
-    <div className="bg-[#323b1a]">
-     <section className="pt-12 pb-12 sm:pb-16 lg:pt-8">
-       <div className="py-24 sm:py-32">
-  <div className="mx-auto max-w-7xl px-6 lg:px-8">
-    <div className="mx-auto max-w-2xl lg:mx-0">
-      <h2 className="items-center text-4xl font-semibold text-pretty text-white sm:text-5xl">About SPA!</h2>
-      <p className="mt-2 text-lg/8 text-gray-300">Utility for coaches, players, and parents!</p>
+  {/* ABOUT SECTION */}
+  <section className="bg-[#323b1a] py-24">
+
+    <div className="max-w-7xl mx-auto px-6">
+
+      {/* HEADER */}
+      <div className="mb-16">
+        <h2 className="text-4xl font-bold text-white mb-2">
+          About SPA
+        </h2>
+        <p className="text-gray-300 text-lg">
+          Utility for coaches, players, and parents
+        </p>
+      </div>
+
+      {/* CARDS */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+
+        {/* COACHES */}
+        <div className="bg-white rounded-2xl shadow-lg p-8 flex flex-col items-center text-center">
+
+          {/* IMAGE SLOT */}
+          <img src={coach} className="w-full h-full object-cover rounded-lg" />
+
+          <h3 className="text-3xl font-bold text-gray-900 mb-3 ">
+            Coaches
+          </h3>
+
+          <p className="text-gray-600 mb-6">
+            Track your team and players' statistics
+          </p>
+
+         <button className="bg-[#323b1a] text-white py-3 rounded-lg font-semibold hover:opacity-90 transition">
+            Learn More
+          </button>
+        </div>
+
+
+        {/* PLAYERS */}
+        <div className="bg-white rounded-2xl shadow-lg p-8 flex flex-col items-center text-center">
+
+          {/* IMAGE SLOT */}
+          <img src={player} className="w-full h-full object-cover rounded-lg" />
+
+          <h3 className="text-3xl font-bold text-gray-900 mb-3">
+            Players
+          </h3>
+
+          <p className="text-gray-600 mb-6">
+            Track your progress
+          </p>
+
+         <button className="bg-[#323b1a] text-white py-3 rounded-lg font-semibold hover:opacity-90 transition">
+            Learn More
+          </button>
+        </div>
+
+
+        {/* PARENTS */}
+        <div className="bg-white rounded-2xl shadow-lg p-8 flex flex-col items-center text-center">
+
+          {/* IMAGE SLOT */}
+          <img src={parents} className="w-full h-full object-cover rounded-lg" />
+
+          <h3 className="text-3xl font-bold text-gray-900 mb-3">
+            Parents
+          </h3>
+
+          <p className="text-gray-600 mb-6">
+            See how your soccer player improves
+          </p>
+
+         <button className="bg-[#323b1a] text-white py-3 rounded-lg font-semibold hover:opacity-90 transition">
+            Learn More
+          </button>
+        </div>
+
+      </div>
     </div>
 
-   <div className="max-w-7xl mx-auto px-6 py-16">
-  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-items-center">
-    
-      <article className="w-full max-w-md bg-white shadow-lg rounded-xl p-8 flex flex-col items-center text-center">
-            
-            <img
-              className="w-full mb-6"
-              src="https://d33wubrfki0l68/Users/elsyfuentes/Documents/SE 300/SPA/SPA/client/src/assets/POSC.png.cloudfront.net/d6f1462500f7670e0db6b76b35054a081679a5a0/0ce15/images/hero/5.1/illustration.png"
-              alt=""
-            />
-
-            <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
-              Coaches
-            </h1>
-
-            <p className="text-xl text-gray-600 mb-8">
-              Add more info here later
-            </p>
-
-      </article>
-    
-      <article className="w-full max-w-md bg-white shadow-lg rounded-xl p-8 flex flex-col items-center text-center">
-          <img
-              className="w-full mb-6"
-              src=""
-              alt=""
-            />
-
-            <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
-              Players
-            </h1>
-
-            <p className="text-xl text-gray-600 mb-8">
-              Add more info here later
-            </p>
-      </article>
-      <article className="w-full max-w-md bg-white shadow-lg rounded-xl p-8 flex flex-col items-center text-center">
-          <img
-              className="w-full mb-6"
-              src=""
-              alt=""
-            />
-
-            <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
-              Parents
-            </h1>
-
-            <p className="text-xl text-gray-600 mb-8">
-              Add more info here later
-            </p>
-      </article>
-    </div>
-  </div>
-</div>
-</div>
-    </section>
-</div>
+  </section>
 </div>
   );
 }

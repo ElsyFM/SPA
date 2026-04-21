@@ -6,7 +6,7 @@ export default function CreateTest() {
     const handleCreateAdmin = async () => {
         try {
             const res = await axios.post(
-                `http://localhost:5000/api/${form.role}/create-test`
+                `http://localhost:5173/api/${form.role}/create-test`
             );
             alert(res.data);
         } catch (err) {
@@ -33,17 +33,26 @@ export default function CreateTest() {
     };
 
     return (
-        <div>
-            <select name="role" onChange={handleChange}>
-                    <option value="admin">Admin</option>
-                    <option value="coach">Coach</option>
-                    <option value="player">Player</option>
-                    <option value="parent">Parent</option>
-            </select>
+       <div className="flex items-center gap-4">
+  
+  <select
+    name="role"
+    onChange={handleChange}
+    className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#c2d245]"
+  >
+    <option value="admin">Admin</option>
+    <option value="coach">Coach</option>
+    <option value="player">Player</option>
+    <option value="parent">Parent</option>
+  </select>
 
-            <button onClick={handleCreateAdmin}>
-                Create Test {roleLabels[form.role]}
-            </button>
-        </div>
+  <button
+    onClick={handleCreateAdmin}
+    className="bg-[#323b1a] text-white px-6 py-2 rounded-lg font-semibold hover:opacity-90 transition"
+  >
+    Create Test {roleLabels[form.role]}
+  </button>
+
+</div>
     );
 }
